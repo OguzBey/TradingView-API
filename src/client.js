@@ -158,7 +158,6 @@ module.exports = class Client {
     if (!this.isOpen) return;
 
     protocol.parseWSPacket(str).forEach((packet) => {
-      console.dir(packet, { depth: null });
       if (global.TW_DEBUG) console.log('§90§30§107 CLIENT §0 PACKET', packet);
       if (typeof packet === 'number') { // Ping
         this.#ws.send(protocol.formatWSPacket(`~h~${packet}`));
